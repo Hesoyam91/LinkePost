@@ -1,0 +1,12 @@
+{
+  "name": "linkepost-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend público para LinkePost usando un modelo Llama compatible con OpenAI",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

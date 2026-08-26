@@ -1,0 +1,396 @@
+/* ═══════════════════════════════════════════════════════════════
+   THEMES & GLOBAL SYSTEM - LinkePost
+═══════════════════════════════════════════════════════════════ */
+
+/* Tema por defecto (LinkedIn Light) */
+:root, [data-theme="default"] {
+  --modal-bg: #f7f9fc;
+  --modal-text: #14212e;
+  --modal-border: rgba(20, 33, 46, 0.12);
+  --header-bg: linear-gradient(135deg, rgba(10, 102, 194, 0.08), rgba(10, 102, 194, 0.02));
+  --header-text: #14212e;
+  --accent-color: #0a66c2;
+  --accent-hover: #084e96;
+  --input-bg: rgba(17, 24, 39, 0.02);
+  --progress-bg: #e6edf7;
+  --progress-fill: linear-gradient(90deg, #0a66c2, #004182);
+  --font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius: 12px;
+  --overlay-bg: rgba(15, 23, 42, 0.38);
+  --modal-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+  --text-outline: -1px -1px 0 rgba(255,255,255,0.9), 1px 1px 0 rgba(20,33,46,0.22), 0 0 10px rgba(10,102,194,0.12);
+
+  /* Botones e inputs */
+  --btn-gen-bg: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  --btn-gen-color: #ffffff;
+  --btn-gen-border: 1px solid rgba(10, 102, 194, 0.26);
+  --title-bg: transparent;
+  --title-border: none;
+  --toggle-hover-text: #0d1723;
+  --toggle-hover-border: rgba(10, 102, 194, 0.28);
+  --toast-color: #0a66c2;
+}
+
+/* Tema: Shuffle Zone (Dark / Lo-Fi) */
+[data-theme="shuffle-zone"] {
+  --modal-bg: #090e14;
+  --modal-text: #ddf4f8;
+  --modal-border: rgba(64, 200, 232, 0.18);
+  --header-bg: transparent;
+  --header-text: #ddf4f8;
+  --accent-color: #40d4e8;
+  --accent-hover: #ddf4f8;
+  --input-bg: rgba(64, 212, 232, 0.02);
+  --progress-bg: #111a22;
+  --progress-fill: linear-gradient(90deg, #1a8fa8, #40d4e8);
+  --font-family: 'Space Mono', monospace, sans-serif;
+  --radius: 6px;
+  --overlay-bg: rgba(4, 7, 10, 0.85);
+  --modal-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --text-outline: -1px -1px 0 rgba(5, 9, 12, 0.9), 1px 1px 0 rgba(64, 212, 232, 0.2), 0 0 10px rgba(64, 212, 232, 0.22);
+
+  /* Recuadros transparentes con borde en Dark Mode */
+  --btn-gen-bg: linear-gradient(135deg, rgba(64, 212, 232, 0.18) 0%, rgba(26, 143, 168, 0.82) 100%);
+  --btn-gen-color: #061a22;
+  --btn-gen-border: 1px solid rgba(64, 212, 232, 0.3);
+  --title-bg: transparent;
+  --title-border: 1px solid rgba(64, 200, 232, 0.25);
+  --toggle-hover-text: #ddf4f8;
+  --toggle-hover-border: #40d4e8;
+  --toast-color: #40d4e8;
+}
+
+#gemini-floating-btn[data-theme="default"] {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 24px rgba(10, 102, 194, 0.28), 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: -1px -1px 0 rgba(16, 24, 32, 0.45), 1px 1px 0 rgba(255,255,255,0.08);
+}
+
+#gemini-floating-btn[data-theme="shuffle-zone"] {
+  background: linear-gradient(135deg, rgba(64, 212, 232, 0.22), rgba(26, 143, 168, 0.72));
+  color: #ddf4f8;
+  border-color: rgba(64, 212, 232, 0.34);
+  box-shadow: 0 0 0 1px rgba(64, 212, 232, 0.16), 0 16px 34px rgba(13, 31, 38, 0.38);
+  text-shadow: -1px -1px 0 rgba(5, 9, 12, 0.9), 1px 1px 0 rgba(64, 212, 232, 0.16);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÓN FLOTANTE LINKEDIN
+═══════════════════════════════════════════════════════════════ */
+#gemini-floating-btn {
+  position: fixed;
+  z-index: 999999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(10, 102, 194, 0.28), 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+#gemini-floating-btn::before {
+  content: "✦";
+  font-size: 12px;
+  line-height: 1;
+}
+
+#gemini-floating-btn[data-position="top-left"] {
+  top: 24px;
+  left: 24px;
+}
+
+#gemini-floating-btn[data-position="top-right"] {
+  top: 24px;
+  right: 24px;
+}
+
+#gemini-floating-btn[data-position="bottom-left"] {
+  bottom: 24px;
+  left: 24px;
+}
+
+#gemini-floating-btn[data-position="bottom-right"] {
+  bottom: 24px;
+  right: 24px;
+}
+
+#gemini-floating-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(10, 102, 194, 0.34), 0 4px 10px rgba(0, 0, 0, 0.22);
+  filter: brightness(1.04);
+}
+
+#gemini-floating-btn:active {
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ESTRUCTURA DEL MODAL
+═══════════════════════════════════════════════════════════════ */
+.gemini-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(6px);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gemini-modal-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,250,252,0.96));
+  color: var(--modal-text);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  font-family: var(--font-family);
+  border-radius: 20px;
+  width: 520px;
+  max-width: 90vw;
+  padding: 20px 20px 18px;
+  box-shadow: var(--modal-shadow);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.gemini-modal-overlay[data-theme="default"] .gemini-modal-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,249,252,0.96));
+  border-color: rgba(20, 33, 46, 0.08);
+}
+
+.gemini-modal-overlay[data-theme="shuffle-zone"] .gemini-modal-card {
+  background: linear-gradient(180deg, #090e14 0%, #0d1720 100%);
+  border-color: rgba(64, 212, 232, 0.18);
+  color: var(--modal-text);
+}
+
+/* Header & Title (Sin banners estáticos) */
+.gemini-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  background: var(--header-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: 14px;
+  color: var(--header-text);
+  padding: 12px 14px;
+}
+
+.gemini-modal-overlay[data-theme="shuffle-zone"] .gemini-modal-header {
+  background: linear-gradient(135deg, rgba(64, 212, 232, 0.08), rgba(64, 212, 232, 0.02));
+  border-color: rgba(64, 212, 232, 0.14);
+}
+
+.gemini-modal-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--header-text);
+  text-shadow: var(--text-outline);
+}
+
+.theme-toggle-btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: rgba(10, 102, 194, 0.06);
+  border: 1px solid rgba(10, 102, 194, 0.14);
+  color: var(--modal-text);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.gemini-modal-overlay[data-theme="default"] .theme-toggle-btn {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: rgba(10, 102, 194, 0.18);
+}
+
+.gemini-modal-overlay[data-theme="shuffle-zone"] .theme-toggle-btn {
+  background: rgba(64, 212, 232, 0.08);
+  border-color: rgba(64, 212, 232, 0.25);
+}
+
+.theme-toggle-btn:hover {
+  border-color: rgba(10, 102, 194, 0.28);
+  background: rgba(10, 102, 194, 0.12);
+  transform: scale(1.04);
+}
+
+.gemini-action-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.gemini-action-row .gemini-submit-btn,
+.gemini-action-row .gemini-close-inline-btn {
+  flex: 1;
+}
+
+.gemini-close-inline-btn {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.03);
+  color: var(--modal-text);
+  border: 1px solid var(--modal-border);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.gemini-close-inline-btn:hover {
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* Input y Botón de Generar */
+.gemini-input-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--input-bg);
+  color: var(--modal-text);
+  border: 1px solid var(--modal-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 48px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gemini-input-textarea:focus {
+  border-color: rgba(10, 102, 194, 0.4);
+  box-shadow: 0 0 0 4px rgba(10, 102, 194, 0.08);
+}
+
+.gemini-modal-overlay[data-theme="shuffle-zone"] .gemini-input-textarea:focus {
+  border-color: rgba(64, 212, 232, 0.46);
+  box-shadow: 0 0 0 4px rgba(64, 212, 232, 0.08);
+}
+
+.gemini-submit-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: var(--btn-gen-bg);
+  color: var(--btn-gen-color);
+  border: var(--btn-gen-border);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0 10px 20px rgba(10, 102, 194, 0.18);
+  transition: all 0.2s ease;
+  text-shadow: var(--text-outline);
+}
+
+.gemini-modal-overlay[data-theme="shuffle-zone"] .gemini-submit-btn {
+  box-shadow: 0 12px 20px rgba(64, 212, 232, 0.18);
+}
+
+.gemini-submit-btn:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(10, 102, 194, 0.22);
+}
+
+#gemini-form-body label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--modal-text);
+  font-weight: 700;
+}
+
+/* Loading & Transición suave de texto (4 segundos) */
+.gemini-loading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.gemini-loading-message {
+  font-size: 13px;
+  font-style: italic;
+  min-height: 24px;
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gemini-loading-message.fade-out {
+  opacity: 0;
+}
+
+.gemini-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gemini-progress-bar-fill {
+  height: 100%;
+  background: var(--progress-fill);
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 3px;
+}
+
+/* Zona de Acciones y Notificación */
+.gemini-action-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gemini-btn-secondary {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  color: var(--modal-text);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.gemini-btn-secondary:hover {
+  border-color: var(--toggle-hover-border);
+  color: var(--toggle-hover-text);
+}
+
+.gemini-copy-toast {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--toast-color);
+  text-align: center;
+  margin-top: 8px;
+  min-height: 18px;
+}

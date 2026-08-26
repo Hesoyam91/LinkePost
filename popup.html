@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root, body[data-theme="default"] {
+      color-scheme: light;
+      --popup-bg: #f5f7fb;
+      --popup-card: #ffffff;
+      --popup-border: #dfe6f1;
+      --popup-text: #1b1f23;
+      --popup-muted: #5f6f86;
+      --popup-accent: #0a66c2;
+      --popup-accent-dark: #004182;
+      --popup-input-bg: #f9fafc;
+      --popup-shadow: rgba(15, 23, 42, 0.08);
+      --popup-outline: -1px -1px 0 rgba(255,255,255,0.9), 1px 1px 0 rgba(20,33,46,0.2);
+    }
+
+    body[data-theme="shuffle-zone"] {
+      color-scheme: dark;
+      --popup-bg: #090e14;
+      --popup-card: #111a22;
+      --popup-border: rgba(64, 200, 232, 0.2);
+      --popup-text: #ddf4f8;
+      --popup-muted: #9dccd8;
+      --popup-accent: #40d4e8;
+      --popup-accent-dark: #1a8fa8;
+      --popup-input-bg: #0b1220;
+      --popup-shadow: rgba(0, 0, 0, 0.42);
+      --popup-outline: -1px -1px 0 rgba(5,9,12,0.9), 1px 1px 0 rgba(64,212,232,0.2), 0 0 10px rgba(64,212,232,0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      width: 320px;
+      padding: 18px;
+      margin: 0;
+      font-family: var(--popup-font, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, var(--popup-bg) 0%, color-mix(in srgb, var(--popup-bg) 82%, var(--popup-accent) 18%) 100%);
+      color: var(--popup-text);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    body[data-theme="shuffle-zone"] { --popup-font: "Space Mono"; }
+
+    .popup-shell {
+      background: var(--popup-card);
+      border: 1px solid var(--popup-border);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 8px 22px var(--popup-shadow);
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .popup-header {
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--popup-border);
+    }
+
+    .popup-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--popup-text);
+      text-shadow: var(--popup-outline);
+    }
+
+    .form-group { margin-bottom: 12px; }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--popup-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid var(--popup-border);
+      border-radius: 10px;
+      background: var(--popup-input-bg);
+      color: var(--popup-text);
+      font-size: 13px;
+      outline: none;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: rgba(10, 102, 194, 0.5);
+      box-shadow: 0 0 0 4px rgba(10, 102, 194, 0.08);
+    }
+
+    body[data-theme="shuffle-zone"] input:focus,
+    body[data-theme="shuffle-zone"] select:focus {
+      border-color: rgba(64, 212, 232, 0.5);
+      box-shadow: 0 0 0 4px rgba(64, 212, 232, 0.08);
+    }
+
+    button {
+      width: 100%;
+      padding: 11px 12px;
+      cursor: pointer;
+      margin-top: 8px;
+      border: none;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--popup-accent) 0%, var(--popup-accent-dark) 100%);
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(10, 102, 194, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-shadow: var(--popup-outline);
+    }
+
+    body[data-theme="shuffle-zone"] button {
+      color: #061a22;
+      border: 1px solid rgba(64, 212, 232, 0.3);
+      box-shadow: 0 8px 18px rgba(64, 212, 232, 0.18);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(10, 102, 194, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-shell">
+    <div class="popup-header">
+      <h1 class="popup-title">LinkePost</h1>
+    </div>
+
+    <div class="form-group">
+      <label for="themeSelect">Tema Visual:</label>
+      <select id="themeSelect">
+        <option value="default">Light (Estándar)</option>
+        <option value="shuffle-zone">Dark</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="positionSelect">Posición del botón:</label>
+      <select id="positionSelect">
+        <option value="top-right">Superior derecha</option>
+        <option value="top-left">Superior izquierda</option>
+        <option value="bottom-right">Inferior derecha</option>
+        <option value="bottom-left">Inferior izquierda</option>
+      </select>
+    </div>
+
+    <button id="saveBtn">Guardar Configuración</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

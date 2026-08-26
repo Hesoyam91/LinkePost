@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "LinkedIn Viral Post Generator",
+  "version": "1.0.0",
+  "description": "Genera publicaciones estructuradas para LinkedIn utilizando un backend público con Llama.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "https://www.linkedin.com/*",
+    "https://linkepost-api.example.com/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "linkedin-generator@example.com"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
